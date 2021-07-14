@@ -14,7 +14,7 @@ class ControladorUsuario
             require_once "src/telas/cadastro/index.php";
         } else {
             $usuario = new Usuario($username, $senha, $nomecompleto, $email);
-            $usuario->salvar();
+            $result = $usuario->salvar();
             if (!is_bool($result)) {
                 require_once "src/telas/login/index.php";
             } else {
