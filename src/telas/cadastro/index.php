@@ -31,7 +31,7 @@
             </div>
             <div class="form-control">
                 <label for="senha">Senha</label>
-                <input placeholder="senha *" type="senha" name="senha" id="senha" required>
+                <input placeholder="senha *" type="password" name="senha" id="senha" required>
             </div>
             <button type="submit">Cadastrar!</button>
             <div class="vocative">

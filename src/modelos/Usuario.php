@@ -22,7 +22,7 @@ class Usuario
     {
         try {
             $this->hashSenha();
-            $stmt = $this->conn->prepare('INSERT INTO users (username, senha, nome_completo, email) VALUES (:username, :senha, :nome_completo, :email)');
+            $stmt = Conexao::getConnection()->prepare('INSERT INTO users (username, senha, nome_completo, email) VALUES (:username, :senha, :nome_completo, :email)');
             $stmt->bindParam(":email", $this->getEmail());
             $stmt->bindParam(":senha", $this->getSenha());
             $stmt->bindParam(":username", $this->getUsername());
