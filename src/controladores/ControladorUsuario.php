@@ -4,7 +4,7 @@ require_once "src/modelos/Usuario.php";
 
 class ControladorUsuario
 {
-    public function signUp()
+    public function cadastro()
     {
         $username = $_POST["username"];
         $nomecompleto = $_POST["nomecompleto"];

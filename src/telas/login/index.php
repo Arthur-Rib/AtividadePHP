@@ -16,7 +16,7 @@
 <body>
     <div class="container">
         <h1>Login</h1>
-        <form action="?class=User&action=login" method="post" required>
+        <form action="?class=Usuario&action=login" method="post">
             <div class="form-control">
                 <label for="email">E-mail</label>
                 <input placeholder="email *" type="email" name="email" id="email" required>

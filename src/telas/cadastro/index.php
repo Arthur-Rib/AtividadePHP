@@ -16,7 +16,7 @@
 <body>
     <div class="container">
         <h1>Cadastro</h1>
-        <form action="?class=User&action=signUp" method="post" required>
+        <form action="?class=Usuario&action=cadastro" method="post">
             <div class="form-control">
                 <label for="username">Nome de usuário</label>
                 <input placeholder="username *" type="text" name="username" id="username" required>
