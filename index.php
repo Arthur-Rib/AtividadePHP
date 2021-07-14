@@ -2,15 +2,15 @@
 session_start();
 
 if (isset($_GET["view"])) {
-    require_once "app/visualizar/" . $_GET["view"] . "/index.php";
+    require_once "src/telas/" . $_GET["view"] . "/index.php";
 } else if (isset($_GET["action"]) && isset($_GET["class"])) {
     $controlador = $_GET["class"] . "controlador";
     $action = $_GET["action"];
-    require_once "app/controladores/" . $controlador . ".php";
+    require_once "src/controladores/" . $controlador . ".php";
     $controlador = new $controlador();
     $controlador->$action();
 } else if (isset($_SESSION["loggedUser"])) {
-    require_once "src/visualizar/home/index.php";
+    require_once "src/telas/home/index.php";
 } else {
-    require_once "src/visualizar/login/index.php";
+    require_once "src/telas/login/index.php";
 }
