@@ -30,7 +30,7 @@ class ControladorUsuario
         if (!isset($email) || !isset($senha)) {
             require_once "src/telas/cadastro/index.php";
         } else {
-            $result = Usuario::logIn($email, $password);
+            $result = Usuario::logIn($email, $senha);
             if (!is_bool($result)) {
                 $_SESSION["loggedUser"] = array("id" => $result->getId(), "username" => $result->getUsername(), "email" => $result->getEmail());
                 require_once "src/telas/home/index.php";
