@@ -49,7 +49,9 @@ class Usuario
             $query = Conexao::getConnection()->query('SELECT * FROM usuarios');
             $list = $query->fetchAll(PDO::FETCH_ASSOC);
             $users = array_map(function ($e) {
-                return new Usuario($e['id'], $e['email'], $e['username'], $e['nome_completo'], $e['senha']);
+                $user =  new Usuario($e['email'], $e['username'], $e['nome_completo'], $e['senha']);
+                $user->setId($e['id']);
+                return $user;
             }, $list);
             return $users;
         } catch (Exception $e) {
