@@ -6,15 +6,6 @@ class ControladorUsuario
 {
     private ControladorUsuario $userService;
 
-    function __construct()
-    {
-        try {
-            $this->userService = new ControladorUsuario(new UserRepository(Connection::getConnection()));
-        } catch (Exception $e) {
-            var_dump($e->getMessage());
-        }
-    }
-
     public function signUp()
     {
         $username = $_POST["username"];
@@ -24,7 +15,7 @@ class ControladorUsuario
         if (!isset($username) || !isset($fullname) || !isset($email) || !isset($password)) {
             require_once "app/views/signup/index.php";
         } else {
-            $result = $this->userService->createUser($username, $password, $fullname, $email);
+            $usuario = new Usuario($username, $password, $fullname, $email);
             if (!is_bool($result)) {
                 require_once "app/views/login/index.php";
             } else {

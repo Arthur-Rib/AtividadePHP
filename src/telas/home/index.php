@@ -3,7 +3,7 @@ $user = $_SESSION["loggedUser"];
 require_once "src/services/UserService.php";
 require_once "src/dados/repositories/UserRepository.php";
 require_once "src/dados/Connection.php";
-$userService = new UserService(
+$userService = new ControladorUsuario(
     new UserRepository(
         Connection::getConnection()
     )
