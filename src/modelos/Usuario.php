@@ -22,11 +22,15 @@ class Usuario
     {
         try {
             $this->hashSenha();
+            $email =  $this->getEmail();
+            $senha = $this->getSenha();
+            $username = $this->getUsername();
+            $nomeCompleto = $this->getNomeCompleto();
             $stmt = Conexao::getConnection()->prepare('INSERT INTO users (username, senha, nome_completo, email) VALUES (:username, :senha, :nome_completo, :email)');
-            $stmt->bindParam(":email", $this->getEmail());
-            $stmt->bindParam(":senha", $this->getSenha());
-            $stmt->bindParam(":username", $this->getUsername());
-            $stmt->bindParam(":nome_completo", $this->getNomeCompleto());
+            $stmt->bindParam(":email", $email);
+            $stmt->bindParam(":senha", $senha);
+            $stmt->bindParam(":username", $username);
+            $stmt->bindParam(":nome_completo", $nomeCompleto);
             $stmt->execute();
         } catch (Exception $e) {
             echo `<div class="error-message">` . $e->getMessage() . `</div>`;
