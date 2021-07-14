@@ -26,7 +26,7 @@ class Usuario
             $senha = $this->getSenha();
             $username = $this->getUsername();
             $nomeCompleto = $this->getNomeCompleto();
-            $stmt = Conexao::getConnection()->prepare('INSERT INTO users (username, senha, nome_completo, email) VALUES (:username, :senha, :nome_completo, :email)');
+            $stmt = Conexao::getConnection()->prepare('INSERT INTO usuarios (username, senha, nome_completo, email) VALUES (:username, :senha, :nome_completo, :email)');
             $stmt->bindParam(":email", $email);
             $stmt->bindParam(":senha", $senha);
             $stmt->bindParam(":username", $username);
@@ -46,7 +46,7 @@ class Usuario
     public static function listarUsuarios()
     {
         try {
-            $query = Conexao::getConnection()->query('SELECT * FROM users');
+            $query = Conexao::getConnection()->query('SELECT * FROM usuarios');
             $list = $query->fetchAll(PDO::FETCH_ASSOC);
             $users = array_map(function ($e) {
                 return new Usuario($e['id'], $e['email'], $e['username'], $e['nome_completo'], $e['senha']);
@@ -61,7 +61,7 @@ class Usuario
     public static function logIn(String $email, String $senha)
     {
         try {
-            $stmt = Conexao::getConnection()->prepare('SELECT * FROM users WHERE email = :email');
+            $stmt = Conexao::getConnection()->prepare('SELECT * FROM usuarios WHERE email = :email');
             $stmt->bindParam(":email", $email);
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
