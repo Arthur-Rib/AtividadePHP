@@ -1,8 +1,6 @@
 <?php
 $user = $_SESSION["loggedUser"];
-require_once "src/dados/repositories/UserRepository.php";
-require_once "src/dados/Connection.php";
-
+$users = Usuario::listarUsuarios();
 function logOut()
 {
     session_destroy();
