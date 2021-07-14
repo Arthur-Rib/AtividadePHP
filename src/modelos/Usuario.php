@@ -26,7 +26,7 @@ class Usuario
             $senha = $this->getSenha();
             $username = $this->getUsername();
             $nomeCompleto = $this->getNomeCompleto();
-            $stmt = Conexao::getConnection()->prepare('INSERT INTO usuarios (username, senha, nome_completo, email) VALUES (:username, :senha, :nome_completo, :email)');
+            $stmt = Conexao::getConnection()->prepare('INSERT INTO usuarios (username, email, nome_completo, senha) VALUES (:username, :email, :nome_completo, :senha)');
             $stmt->bindParam(":email", $email);
             $stmt->bindParam(":senha", $senha);
             $stmt->bindParam(":username", $username);
@@ -40,7 +40,7 @@ class Usuario
 
     private function hashSenha()
     {
-        password_hash($this->getSenha(), PASSWORD_DEFAULT);
+       $this->setSenha(password_hash($this->getSenha(), PASSWORD_DEFAULT));
     }
 
     public static function listarUsuarios()
@@ -183,5 +183,17 @@ class Usuario
     public function getSenha()
     {
         return $this->senha;
+    }
+
+    /**
+     * Set the value of senha
+     *
+     * @return  String
+     */
+    public function setSenha(String $senha)
+    {
+        $this->senha = $senha;
+
+        return $this;
     }
 }

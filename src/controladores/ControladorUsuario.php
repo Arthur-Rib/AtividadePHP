@@ -13,7 +13,7 @@ class ControladorUsuario
         if (!isset($username) || !isset($nomecompleto) || !isset($email) || !isset($senha)) {
             require_once "src/telas/cadastro/index.php";
         } else {
-            $usuario = new Usuario($username, $senha, $nomecompleto, $email);
+            $usuario = new Usuario($email, $username, $nomecompleto, $senha);
             $result = $usuario->salvar();
             if (!is_bool($result)) {
                 require_once "src/telas/login/index.php";
