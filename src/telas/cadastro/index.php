@@ -22,16 +22,16 @@
                 <input placeholder="username *" type="text" name="username" id="username" required>
             </div>
             <div class="form-control">
-                <label for="fullname">Nome Completo</label>
-                <input placeholder="fullname *" type="text" name="fullname" id="fullname" required>
+                <label for="nomecompleto">Nome Completo</label>
+                <input placeholder="nome completo *" type="text" name="nomecompleto" id="nomecompleto" required>
             </div>
             <div class="form-control">
                 <label for="email">E-mail</label>
                 <input placeholder="email *" type="email" name="email" id="email" required>
             </div>
             <div class="form-control">
-                <label for="password">Senha</label>
-                <input placeholder="password *" type="password" name="password" id="password" required>
+                <label for="senha">Senha</label>
+                <input placeholder="senha *" type="senha" name="senha" id="senha" required>
             </div>
             <button type="submit">Cadastrar!</button>
             <div class="vocative">

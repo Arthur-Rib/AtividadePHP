@@ -22,8 +22,8 @@
                 <input placeholder="email *" type="email" name="email" id="email" required>
             </div>
             <div class="form-control">
-                <label for="password">Senha</label>
-                <input placeholder="password *" type="password" name="password" id="password" required>
+                <label for="senha">Senha</label>
+                <input placeholder="senha *" type="senha" name="senha" id="senha" required>
             </div>
             <button type="submit">Entrar!</button>
             <div class="vocative">
