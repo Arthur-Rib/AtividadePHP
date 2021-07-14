@@ -4,8 +4,6 @@ require_once "src/dados/Conexão.php";
 
 class ControladorUsuario
 {
-    private ControladorUsuario $userService;
-
     public function signUp()
     {
         $username = $_POST["username"];
