@@ -14,29 +14,26 @@ function logOut()
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="public/css/home.css">
-    <link rel="stylesheet" href="public/css/global.css">
-    <link rel="stylesheet" href="public/css/error_message.css">
-    <title>Document</title>
+    <title>Página Home</title>
 </head>
 
 <body>
     <div class="container">
         <section>
-            <h1>Bem Vindo <?= $user['username'] ?></h1>
+            <h1> Seja Bem Vindo <?= $user['username'] ?></h1>
             <table>
                 <thead>
                     <th>Id</th>
                     <th>Email</th>
                     <th>Username</th>
-                    <th>Fullname</th>
+                    <th>Nome completo</th>
                 </thead>
                 <?php foreach ($users as $key => $value) : ?>
                     <tr>
                         <td><?= $value->getId() ?></td>
                         <td><?= $value->getEmail() ?></td>
                         <td><?= $value->getUsername() ?></td>
-                        <td><?= $value->getFullname() ?></td>
+                        <td><?= $value->getNomeCompleto() ?></td>
                     </tr>
                 <?php endforeach; ?>
             </table>

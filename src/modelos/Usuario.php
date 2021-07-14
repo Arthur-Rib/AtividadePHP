@@ -72,7 +72,9 @@ class Usuario
             if (!password_verify($senha, $user['senha'])) {
                 throw new Exception("Invalid password");
             }
-            return new Usuario($user['id'], $user['email'], $user['username'], $user['nome_completo'], $user['senha']);
+            $return = new Usuario($user['email'], $user['username'], $user['nome_completo'], $user['senha']);
+            $return->setId($user['id']);
+            return $return;
         } catch (Exception $e) {
             echo `<div class="error-message">` . $e->getMessage() . `</div>`;
             return false;
