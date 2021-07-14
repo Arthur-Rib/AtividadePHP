@@ -37,7 +37,7 @@ function logOut()
                     </tr>
                 <?php endforeach; ?>
             </table>
-            <form action="?class=User&action=logout" method="post" required>
+            <form action="?class=Usuario&action=logout" method="post" required>
                 <button type="submit">Sair</button>
             </form>
         </section>
