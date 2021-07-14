@@ -1,4 +1,5 @@
 <?php
+require_once "src/modelos/Usuario.php";
 $user = $_SESSION["loggedUser"];
 $users = Usuario::listarUsuarios();
 function logOut()
