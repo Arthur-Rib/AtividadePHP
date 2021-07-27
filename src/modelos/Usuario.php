@@ -40,7 +40,7 @@ class Usuario
 
     private function hashSenha()
     {
-       $this->setSenha(password_hash($this->getSenha(), PASSWORD_DEFAULT));
+        $this->setSenha(password_hash($this->getSenha(), PASSWORD_DEFAULT));
     }
 
     public static function listarUsuarios()
@@ -54,6 +54,20 @@ class Usuario
                 return $user;
             }, $list);
             return $users;
+        } catch (Exception $e) {
+            echo `<div class="error-message">` . $e->getMessage() . `</div>`;
+            return false;
+        }
+    }
+    public static function buscar(String $stringDeBusca)
+    {
+        try {
+            $stmt = Conexao::getConnection()->prepare('SELECT * FROM usuarios WHERE email like :string_de_busca or username like :string_de_busca or nome_completo like :string_de_busca ');
+            $stringDeBusca = '%' . $stringDeBusca . '%';
+            $stmt->bindParam(":string_de_busca", $stringDeBusca);
+            $fetchAll = $stmt->execute();
+            $fetchAll = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $fetchAll;
         } catch (Exception $e) {
             echo `<div class="error-message">` . $e->getMessage() . `</div>`;
             return false;

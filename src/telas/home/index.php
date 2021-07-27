@@ -1,7 +1,11 @@
 <?php
 require_once "src/modelos/Usuario.php";
 $user = $_SESSION["loggedUser"];
-$users = Usuario::listarUsuarios();
+if (isset($_GET["pesquisa"])) {
+    $users = Usuario::buscar($_GET["pesquisa"]);
+} else {
+    $users = Usuario::listarUsuarios();
+}
 function logOut()
 {
     session_destroy();
@@ -38,6 +42,10 @@ function logOut()
                     </tr>
                 <?php endforeach; ?>
             </table>
+            <form action="?tela=home" method="GET">
+                <input type="text" name="pesquisa" value="<?php echo isset($_GET["pesquisa"]) ? $_GET["pesquisa"] : "" ?>">
+                <button type="submit">Enviar</button>
+            </form>
             <form action="?class=Usuario&action=logout" method="post" required>
                 <button type="submit">Sair</button>
             </form>
