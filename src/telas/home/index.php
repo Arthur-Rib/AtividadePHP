@@ -25,6 +25,11 @@ function logOut()
 <body>
     <div class="container">
         <section>
+            <form action="?tela=home" method="GET">
+                <label for="pesquisa">Pesquisar Usuario:</label>
+                <input type="text" name="pesquisa" value="<?php echo isset($_GET["pesquisa"]) ? $_GET["pesquisa"] : "" ?>">
+                <button type="submit">Enviar</button>
+            </form>
             <h1> Seja Bem Vindo <?= $user['username'] ?></h1>
             <table>
                 <thead>
@@ -42,10 +47,6 @@ function logOut()
                     </tr>
                 <?php endforeach; ?>
             </table>
-            <form action="?tela=home" method="GET">
-                <input type="text" name="pesquisa" value="<?php echo isset($_GET["pesquisa"]) ? $_GET["pesquisa"] : "" ?>">
-                <button type="submit">Enviar</button>
-            </form>
             <form action="?class=Usuario&action=logout" method="post" required>
                 <button type="submit">Sair</button>
             </form>
