@@ -48,16 +48,20 @@ class Usuario
         try {
             $query = Conexao::getConnection()->query('SELECT * FROM usuarios');
             $list = $query->fetchAll(PDO::FETCH_ASSOC);
-            $users = array_map(function ($e) {
-                $user =  new Usuario($e['email'], $e['username'], $e['nome_completo'], $e['senha']);
-                $user->setId($e['id']);
-                return $user;
-            }, $list);
+            $users = Usuario::mapearUsuario($list);
             return $users;
         } catch (Exception $e) {
             echo `<div class="error-message">` . $e->getMessage() . `</div>`;
             return false;
         }
+    }
+
+    private static function mapearUsuario($list){
+        return array_map(function ($e) {
+            $user =  new Usuario($e['email'], $e['username'], $e['nome_completo'], $e['senha']);
+            $user->setId($e['id']);
+            return $user;
+        }, $list);
     }
     public static function buscar(String $stringDeBusca)
     {
@@ -65,9 +69,10 @@ class Usuario
             $stmt = Conexao::getConnection()->prepare('SELECT * FROM usuarios WHERE email like :string_de_busca or username like :string_de_busca or nome_completo like :string_de_busca ');
             $stringDeBusca = '%' . $stringDeBusca . '%';
             $stmt->bindParam(":string_de_busca", $stringDeBusca);
-            $fetchAll = $stmt->execute();
-            $fetchAll = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            return $fetchAll;
+            $list = $stmt->execute();
+            $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $users = Usuario::mapearUsuario($list);
+            return $users;
         } catch (Exception $e) {
             echo `<div class="error-message">` . $e->getMessage() . `</div>`;
             return false;
